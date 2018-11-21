@@ -1,0 +1,118 @@
+<metricdefinitions version="1">
+
+    <metric id="com.allinea.metrics.mpwide.admin_duration">
+        <units>s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.mpwide_src" functionName="allinea_mpwide_get_admin_duration" 
+                divideBySampleTime="false"/>
+        <display>
+            <description>Duration of sampled MPWIDE connection calls (s)</description>
+            <displayName>MPWIDE connection duration</displayName>
+            <type>mpwide</type>
+            <colour>salmon</colour>
+        </display>
+    </metric>
+   
+
+    <metric id="com.allinea.metrics.mpwide.sendrecv_send_rate">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.mpwide_src" functionName="allinea_mpwide_get_bytes_sendrecv_sent" 
+                divideBySampleTime="true"/>
+        <display>
+            <description>MPWIDE bytes sendrecv sent per second per process</description>
+            <displayName>MPWIDE sendrecv sent</displayName>
+            <type>mpwide</type>
+            <colour>salmon</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.mpwide.sendrecv_recv_rate">
+        <units>B/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.mpwide_src" functionName="allinea_mpwide_get_bytes_sendrecv_recv" 
+                divideBySampleTime="true"/>
+        <display>
+            <description>MPWIDE bytes sendrecv received per second per process</description>
+            <displayName>MPWIDE sendrecv received</displayName>
+            <type>mpwide</type>
+            <colour>salmon</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.mpwide.sendrecv_calls">
+        <units>calls/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.mpwide_src" functionName="allinea_mpwide_get_sendrecv_calls" 
+                divideBySampleTime="true"/>
+        <display>
+            <description>Number of MPWIDE sendrecv calls per second</description>
+            <displayName>MPWIDE sendrecvs</displayName>
+            <type>mpwide</type>
+            <colour>salmon</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.mpwide.sendrecv_duration">
+        <units>s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.mpwide_src" functionName="allinea_mpwide_get_sendrecv_duration" 
+                divideBySampleTime="false"/>
+        <display>
+            <description>Duration of sampled MPWIDE sendrecv calls (s)</description>
+            <displayName>MPWIDE sendrecv duration</displayName>
+            <type>mpwide</type>
+            <colour>salmon</colour>
+        </display>
+    </metric>
+
+
+    <metric id="com.allinea.metrics.mpwide.barrier_calls">
+        <units>calls/s</units>
+        <dataType>uint64_t</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.mpwide_src" functionName="allinea_mpwide_get_barrier_calls" 
+                divideBySampleTime="true"/>
+        <display>
+            <description>Number of MPWIDE barrier calls per second</description>
+            <displayName>MPWIDE barriers</displayName>
+            <type>mpwide</type>
+            <colour>salmon</colour>
+        </display>
+    </metric>
+
+    <metric id="com.allinea.metrics.mpwide.barrier_duration">
+        <units>s</units>
+        <dataType>double</dataType>
+        <domain>time</domain>
+        <source ref="com.allinea.metrics.mpwide_src" functionName="allinea_mpwide_get_barrier_duration" 
+                divideBySampleTime="false"/>
+        <display>
+            <description>Duration of sampled MPWIDE barrier calls (s)</description>
+            <displayName>MPWIDE barrier duration</displayName>
+            <type>mpwide</type>
+            <colour>salmon</colour>
+        </display>
+    </metric>
+
+    <metricGroup id="MPWIDE">
+        <displayName>MPWIDE</displayName>
+        <description>All metrics relating to communication via MPWIDE.</description>
+        <metric ref="com.allinea.metrics.mpwide.admin_duration"/>
+        <metric ref="com.allinea.metrics.mpwide.sendrecv_send_rate"/>
+        <metric ref="com.allinea.metrics.mpwide.sendrecv_recv_rate"/>
+        <metric ref="com.allinea.metrics.mpwide.sendrecv_calls"/>
+        <metric ref="com.allinea.metrics.mpwide.sendrecv_duration"/>
+        <metric ref="com.allinea.metrics.mpwide.barrier_calls"/>
+        <metric ref="com.allinea.metrics.mpwide.barrier_duration"/>
+    </metricGroup>
+
+    <source id="com.allinea.metrics.mpwide_src">
+        <sharedLibrary>libmpwide.so</sharedLibrary>
+    </source>
+</metricdefinitions>

@@ -1,0 +1,40 @@
+<partialReport name="SuperMUCEnergyReport" 
+               xmlns="http://www.allinea.com/2016/AllineaReports"> 
+  <reportMetrics>
+    <!-- multiple <reportMetric> elements can be defined -->
+    <!-- source attribute must be set to "metric" --> 
+    <reportMetric id="compat.supermuc.power.mean" 
+                  displayName="Mean node power" 
+                  units="W" 
+                  source="metric"
+                  colour="hsl(25, 70, 71)">
+      <sourceDetails metricRef="com.allinea.metrics.compat.supermuc.power" sampleValue="mean" aggregation="mean"/>
+    </reportMetric> 
+    <reportMetric id="compat.supermuc.power.max" 
+                  displayName="Peak node power" 
+                  units="W" 
+                  source="metric"
+                  colour="hsl(25, 70, 71)">
+      <sourceDetails metricRef="com.allinea.metrics.compat.supermuc.power" sampleValue="max" aggregation="max"/>
+    </reportMetric> 
+    <reportMetric id="compat.supermuc.energy.total" 
+                  displayName="Total job energy" 
+                  units="J" 
+                  source="metric"
+                  colour="hsl(19, 70, 71)">
+      <sourceDetails metricRef="com.allinea.metrics.compat.supermuc.energy" sampleValue="sum" aggregation="max"/>
+    </reportMetric>
+  </reportMetrics> 
+  <subsections> 
+    <!-- multiple <subsection> elements can be defined -->
+    <subsection id="compa.supermuc.energy"
+                heading="SuperMUC Energy"
+                colour="hsl(21, 70, 71)">
+      <text>Energy usage data from SuperMUC</text> 
+      <!-- multiple <entry> elements can be defined --> 
+      <entry reportMetric="compat.supermuc.power.mean" group="SuperMUCPowerGroup"/>
+      <entry reportMetric="compat.supermuc.power.max" group="SuperMUCPowerGroup"/>
+      <entry reportMetric="compat.supermuc.energy.total" group="SuperMUCEnergyGroup"/>
+    </subsection>
+  </subsections> 
+</partialReport> 

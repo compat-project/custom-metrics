@@ -2,3 +2,6 @@
 	path = muscle2/muscle2
 	url = https://github.com/psnc-apps/muscle2.git
 	branch = compat
+[submodule "mpwide/MPWide"]
+	path = mpwide/MPWide
+	url = https://github.com/compat-project/MPWide.git
